@@ -6,6 +6,7 @@ public class CubeOfLifeActive : MonoBehaviour {
 
     public GameObject tilePrefab;
     public GameObject selectionTilePrefab;
+    public GameObject floorPrefab;
 
     public int sizeX = 4;
     public int sizeZ = 2;
@@ -25,11 +26,10 @@ public class CubeOfLifeActive : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        floor = GameObject.FindGameObjectWithTag("Floor");
+        floor = Instantiate(floorPrefab, Vector3.zero, Quaternion.identity, transform) as GameObject;
         floorCollider = floor.GetComponentInChildren<MeshCollider>();
 
-        selectionTile = Instantiate(selectionTilePrefab);
-        selectionTile.transform.parent = transform;
+        selectionTile = Instantiate(selectionTilePrefab, transform) as GameObject;
         selectionTile.SetActive(false);
 
         BuildGrid();

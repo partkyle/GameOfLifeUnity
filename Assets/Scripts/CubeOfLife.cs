@@ -45,11 +45,14 @@ public class CubeOfLife : MonoBehaviour {
                 tileComponent.z = z;
 
                 MeshRenderer tileRenderer = tile.GetComponentInChildren<MeshRenderer>();
+                tileRenderer.material = blackMaterial;
 
                 if (gol[x, z] == GOLManager.Tile.White) {
-                    tileRenderer.material = whiteMaterial;
+                    //tileRenderer.material = whiteMaterial;
+                    tileRenderer.enabled = false;
                 } else {
-                    tileRenderer.material = blackMaterial;
+                    //tileRenderer.material = blakMaterial;
+                    tileRenderer.enabled = true;
                 }
 
                 tiles[x, z] = tile;
@@ -76,9 +79,11 @@ public class CubeOfLife : MonoBehaviour {
         foreach (GOLManager.Change change in changes) {
             MeshRenderer tileRenderer = tiles[change.x, change.z].GetComponentInChildren<MeshRenderer>();
             if (change.newState == GOLManager.Tile.White) {
-                tileRenderer.material = whiteMaterial;
+                //tileRenderer.material = whiteMaterial;
+                tileRenderer.enabled = false;
             } else {
                 tileRenderer.material = blackMaterial;
+                tileRenderer.enabled = true;
             }
         }
     }
@@ -90,7 +95,8 @@ public class CubeOfLife : MonoBehaviour {
             if (tile != null) {
                 if (Input.GetMouseButton(0)) {
                     gol[tile.x, tile.z] = GOLManager.Tile.Black;
-                    tile.gameObject.GetComponentInChildren<MeshRenderer>().material = blackMaterial;
+                    //tile.gameObject.GetComponentInChildren<MeshRenderer>().material = blackMaterial;
+                    tile.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
                 }
             }
         }

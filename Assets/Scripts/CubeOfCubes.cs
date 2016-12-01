@@ -54,6 +54,8 @@ public class CubeOfCubes : MonoBehaviour {
 
         GameObject theBigWrapper = new GameObject();
         theBigWrapper.name = "The Big Wrapper";
+        theBigWrapper.transform.parent = transform;
+        theBigWrapper.transform.localPosition = Vector3.zero;
 
         GameObject[] yawws = new GameObject[6];
 
@@ -63,7 +65,7 @@ public class CubeOfCubes : MonoBehaviour {
 
             GameObject yaww = yawws[i] = new GameObject();
             yaww.name = "CenteringTileWrapper " + i;
-            yaww.transform.parent = transform;
+            yaww.transform.parent = theBigWrapper.transform;
             yaww.transform.position = containerPositions[i];
 
             container = new GameObject();

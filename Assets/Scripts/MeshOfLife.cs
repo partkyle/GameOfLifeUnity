@@ -21,7 +21,6 @@ public class MeshOfLife : MonoBehaviour {
 
 
     MeshCollider mc;
-    MeshRenderer mr;
     MeshFilter mf;
 
     GOLManager gol;
@@ -37,7 +36,6 @@ public class MeshOfLife : MonoBehaviour {
     // Use this for initialization
     void Start() {
         mc = GetComponent<MeshCollider>();
-        mr = GetComponent<MeshRenderer>();
         mf = GetComponent<MeshFilter>();
 
         gol = new GOLManager(sizeX, sizeZ);
@@ -81,16 +79,16 @@ public class MeshOfLife : MonoBehaviour {
 
             RaycastHit hit;
             if (mc.Raycast(ray, out hit, 1000f)) {
-                int x = (int)(hit.point.x/tileSize);
-                int z = (int)(hit.point.z/tileSize);
+                int x = (int)(hit.point.x / tileSize);
+                int z = (int)(hit.point.z / tileSize);
                 Debug.Log("x: " + x + ", z: " + z);
-                gol[x, z] = GOLManager.Tile.Black;
-                DrawSpot(x, z, GOLManager.Tile.Black);
+                gol[x, z] = TileStatus.Black;
+                DrawSpot(x, z, TileStatus.Black);
             }
         }
     }
 
-    void DrawSpot(int x, int z, GOLManager.Tile color) {
+    void DrawSpot(int x, int z, TileStatus color) {
         Vector2[] uv = mf.mesh.uv;
         int cellNum = sizeX * z + x;
 
@@ -98,7 +96,7 @@ public class MeshOfLife : MonoBehaviour {
         int vertexStart = cellNum * 4;
 
 
-        if (color == GOLManager.Tile.White) {
+        if (color == TileStatus.White) {
             uv[vertexStart + 0] = new Vector2(low, low);
             uv[vertexStart + 1] = new Vector2(low, lowMid);
             uv[vertexStart + 2] = new Vector2(lowMid, low);
@@ -119,7 +117,7 @@ public class MeshOfLife : MonoBehaviour {
 
         Vector3[] vertices = new Vector3[vertexPerRow * vertexPerCol];
         Vector3[] normals = new Vector3[vertices.Length];
-        int[] triangles = new int[sizeX * sizeZ * 2*3];
+        int[] triangles = new int[sizeX * sizeZ * 2 * 3];
         Vector2[] uv = new Vector2[vertices.Length];
 
 
@@ -142,7 +140,7 @@ public class MeshOfLife : MonoBehaviour {
                 normals[vertexStart + 3] = Vector3.up;
 
                 // build the triangles
-                int triangleStart = cellNum*2*3;
+                int triangleStart = cellNum * 2 * 3;
                 triangles[triangleStart + 0] = vertexStart + 0;
                 triangles[triangleStart + 1] = vertexStart + 3;
                 triangles[triangleStart + 2] = vertexStart + 1;

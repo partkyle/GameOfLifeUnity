@@ -2,29 +2,23 @@
 
 public class GOLManager {
 
-    public enum Tile {
-        White,
-        Black,
-        NotATile
-    }
-
     int sizeX;
     int sizeZ;
-    Tile[,] tiles;
+    TileStatus[,] tiles;
 
-    public Tile this[int x, int z] {
+    public TileStatus this[int x, int z] {
         get {
             if (x < 0) {
-                return Tile.NotATile;
+                return TileStatus.NotATile;
             }
             if (z < 0) {
-                return Tile.NotATile;
+                return TileStatus.NotATile;
             }
             if (x >= sizeX) {
-                return Tile.NotATile;
+                return TileStatus.NotATile;
             }
             if (z >= sizeZ) {
-                return Tile.NotATile;
+                return TileStatus.NotATile;
             }
 
             return tiles[x, z];
@@ -39,13 +33,13 @@ public class GOLManager {
         // this will default to all white
         sizeX = x;
         sizeZ = z;
-        tiles = new Tile[x, z];
+        tiles = new TileStatus[x, z];
     }
 
     public class Change {
         public int x;
         public int z;
-        public Tile newState;
+        public TileStatus newState;
 
         public override string ToString() {
             return "x: " + x + ", z: " + x + ", newState: " + newState;
@@ -61,7 +55,7 @@ public class GOLManager {
             for (int x = 0; x < sizeX; x++) {
                 int liveCount = CountLivingNeighbors(x,z);
 
-                if (this[x, z] == Tile.Black) {
+                if (this[x, z] == TileStatus.Black) {
                     // Any live cell with fewer than two live neighbours dies, as if caused by under-population.
                     // Any live cell with two or three live neighbours lives on to the next generation.
                     // Any live cell with more than three live neighbours dies, as if by over-population.
@@ -73,7 +67,7 @@ public class GOLManager {
                         Change c = new Change();
                         c.x = x;
                         c.z = z;
-                        c.newState = Tile.White;
+                        c.newState = TileStatus.White;
                         changes.Add(c);
                     }
                 } else {
@@ -83,7 +77,7 @@ public class GOLManager {
                         Change c = new Change();
                         c.x = x;
                         c.z = z;
-                        c.newState = Tile.Black;
+                        c.newState = TileStatus.Black;
                         changes.Add(c);
                     }
                 }
@@ -105,7 +99,7 @@ public class GOLManager {
                 // to thine ownself, skip
                 if (dx == 0 && dz == 0) continue;
 
-                if (this[x + dx, z + dz] == Tile.Black) {
+                if (this[x + dx, z + dz] == TileStatus.Black) {
                     count++;
                 }
             }

@@ -55,7 +55,7 @@ public class CubeOfLifeActive : MonoBehaviour {
                 tileComponent.x = x;
                 tileComponent.z = z;
 
-                if (gol[x, z] == GOLManager.Tile.White) {
+                if (gol[x, z] == TileStatus.White) {
                     tile.SetActive(false);
                 } else {
                     tile.SetActive(true);
@@ -87,7 +87,7 @@ public class CubeOfLifeActive : MonoBehaviour {
             int x = change.x;
             int z = change.z;
 
-            if (change.newState == GOLManager.Tile.White) {
+            if (change.newState == TileStatus.White) {
                 tiles[x, z].SetActive(false);
             } else {
                 tiles[x, z].SetActive(true);
@@ -108,20 +108,10 @@ public class CubeOfLifeActive : MonoBehaviour {
 
             if (Input.GetMouseButton(0)) {
                 tiles[x, z].SetActive(true);
-                gol[x, z] = GOLManager.Tile.Black;
+                gol[x, z] = TileStatus.Black;
             }
         } else {
             selectionTile.SetActive(false);
         }
-
-        //if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 1000f, tileMask)) {
-        //    Tile tile = hit.transform.GetComponentInChildren<Tile>();
-        //    if (tile != null) {
-        //        if (Input.GetMouseButton(0)) {
-        //            GOLManager.Tile old = gol[tile.x, tile.z];
-        //            gol[tile.x, tile.z] = GOLManager.Tile.Black;
-        //        }
-        //    }
-        //}
     }
 }

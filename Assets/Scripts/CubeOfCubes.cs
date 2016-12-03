@@ -93,7 +93,7 @@ public class CubeOfCubes : MonoBehaviour {
 
                     MeshRenderer tileRenderer = tile.GetComponentInChildren<MeshRenderer>();
 
-                    if (worlds[i][x, z] == GOLManager.Tile.White) {
+                    if (worlds[i][x, z] == TileStatus.White) {
                         tileRenderer.enabled = false;
                     } else {
                         tileRenderer.enabled = true;
@@ -126,7 +126,7 @@ public class CubeOfCubes : MonoBehaviour {
 
             foreach (GOLManager.Change change in changes) {
                 MeshRenderer tileRenderer = worldTiles[i][change.x, change.z].GetComponentInChildren<MeshRenderer>();
-                if (change.newState == GOLManager.Tile.White) {
+                if (change.newState == TileStatus.White) {
                     tileRenderer.enabled = false;
                 } else {
                     tileRenderer.enabled = true;
@@ -143,7 +143,7 @@ public class CubeOfCubes : MonoBehaviour {
             Tile tile = hit.transform.GetComponentInChildren<Tile>();
             if (tile != null) {
                 if (Input.GetMouseButton(0)) {
-                    worlds[tile.i][tile.x, tile.z] = GOLManager.Tile.Black;
+                    worlds[tile.i][tile.x, tile.z] = TileStatus.Black;
                     tile.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
                 }
             }

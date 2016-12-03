@@ -32,7 +32,7 @@ public class CubeOfLife : MonoBehaviour {
         gol = new GOLManager(sizeX, sizeZ);
         tiles = new GameObject[sizeX, sizeZ];
 
-        gol[1, 4] = GOLManager.Tile.Black;
+        gol[1, 4] = TileStatus.Black;
 
         for (int z = 0; z < sizeZ; z++) {
             for (int x = 0; x < sizeX; x++) {
@@ -47,7 +47,7 @@ public class CubeOfLife : MonoBehaviour {
                 MeshRenderer tileRenderer = tile.GetComponentInChildren<MeshRenderer>();
                 tileRenderer.material = blackMaterial;
 
-                if (gol[x, z] == GOLManager.Tile.White) {
+                if (gol[x, z] == TileStatus.White) {
                     //tileRenderer.material = whiteMaterial;
                     tileRenderer.enabled = false;
                 } else {
@@ -78,7 +78,7 @@ public class CubeOfLife : MonoBehaviour {
 
         foreach (GOLManager.Change change in changes) {
             MeshRenderer tileRenderer = tiles[change.x, change.z].GetComponentInChildren<MeshRenderer>();
-            if (change.newState == GOLManager.Tile.White) {
+            if (change.newState == TileStatus.White) {
                 //tileRenderer.material = whiteMaterial;
                 tileRenderer.enabled = false;
             } else {
@@ -94,7 +94,7 @@ public class CubeOfLife : MonoBehaviour {
             Tile tile = hit.transform.GetComponentInChildren<Tile>();
             if (tile != null) {
                 if (Input.GetMouseButton(0)) {
-                    gol[tile.x, tile.z] = GOLManager.Tile.Black;
+                    gol[tile.x, tile.z] = TileStatus.Black;
                     //tile.gameObject.GetComponentInChildren<MeshRenderer>().material = blackMaterial;
                     tile.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
                 }

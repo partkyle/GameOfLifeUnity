@@ -75,10 +75,9 @@ public class CubeOfCubes : MonoBehaviour {
             GameObject floor = Instantiate(floorPrefab);
             floor.transform.parent = container.transform;
             floor.transform.localPosition = Vector3.zero;
-            floor.transform.localScale = new Vector3(width, 0, height);
+            floor.transform.localScale = new Vector3(width, 1, height);
 
             container.transform.localPosition = new Vector3(-width / 2f, 0, -height / 2f);
-            container.transform.localEulerAngles = Vector3.zero;
 
             for (int z = 0; z < config.sizeZ; z++) {
                 for (int x = 0; x < config.sizeX; x++) {

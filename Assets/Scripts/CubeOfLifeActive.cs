@@ -81,9 +81,9 @@ public class CubeOfLifeActive : MonoBehaviour {
 
     public void NextGeneration() {
 
-        List<GOLManager.Change> changes = gol.NextGeneration();
+        List<Change> changes = gol.NextGeneration();
 
-        foreach (GOLManager.Change change in changes) {
+        foreach (Change change in changes) {
             int x = change.x;
             int z = change.z;
 

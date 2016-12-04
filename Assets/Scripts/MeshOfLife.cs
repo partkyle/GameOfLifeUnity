@@ -58,11 +58,11 @@ public class MeshOfLife : MonoBehaviour {
 
     public void NextGeneration() {
         int start = System.Environment.TickCount;
-        List<GOLManager.Change> changes = gol.NextGeneration();
+        List<Change> changes = gol.NextGeneration();
 
         Debug.Log("Calculating generation " + (System.Environment.TickCount - start) + "ms");
 
-        foreach (GOLManager.Change change in changes) {
+        foreach (Change change in changes) {
             DrawSpot(change.x, change.z, change.newState);
         }
 

@@ -74,9 +74,9 @@ public class CubeOfLife : MonoBehaviour {
 
     public void NextGeneration() {
 
-        List<GOLManager.Change> changes = gol.NextGeneration();
+        List<Change> changes = gol.NextGeneration();
 
-        foreach (GOLManager.Change change in changes) {
+        foreach (Change change in changes) {
             MeshRenderer tileRenderer = tiles[change.x, change.z].GetComponentInChildren<MeshRenderer>();
             if (change.newState == TileStatus.White) {
                 //tileRenderer.material = whiteMaterial;

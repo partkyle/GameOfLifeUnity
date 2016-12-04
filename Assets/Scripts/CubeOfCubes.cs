@@ -11,7 +11,7 @@ public class CubeOfCubes : MonoBehaviour {
 
     float currentGenerationTick;
 
-    GOLManager[] worlds;
+    //GOLManager[] worlds;
 
     GameObject[][,] worldTiles;
 
@@ -19,16 +19,29 @@ public class CubeOfCubes : MonoBehaviour {
 
     LayerMask tileMask;
 
+    MultiGOL multiGOL;
+
+    int faces = 6;
 
     // Use this for initialization
     void Start() {
         tileMask = LayerMask.GetMask("Tiles");
         config = GameObject.FindObjectOfType<Config>() as Config;
+        multiGOL = new MultiGOL(config.sizeX, config.sizeZ, faces);
+        multiGOL.tiles[1][2,4] = TileStatus.Black;
+        multiGOL.tiles[1][2,5] = TileStatus.Black;
+        multiGOL.tiles[1][2,6] = TileStatus.Black;
+        multiGOL.tiles[1][2,6] = TileStatus.Black;
+        multiGOL.tiles[1][3,3] = TileStatus.Black;
+        multiGOL.tiles[1][3,6] = TileStatus.Black;
+        multiGOL.tiles[1][4,4] = TileStatus.Black;
+        multiGOL.tiles[1][4,6] = TileStatus.Black;
+        multiGOL.tiles[1][5,5] = TileStatus.Black;
+
         BuildGrid();
     }
 
     public void BuildGrid() {
-        worlds = new GOLManager[6];
         worldTiles = new GameObject[6][,];
 
         float width = config.tileSize * config.sizeX;
@@ -60,7 +73,6 @@ public class CubeOfCubes : MonoBehaviour {
         GameObject[] yawws = new GameObject[6];
 
         for (int i = 0; i < 6; i++) {
-            worlds[i] = new GOLManager(config.sizeX, config.sizeZ);
             worldTiles[i] = new GameObject[config.sizeX, config.sizeZ];
 
             GameObject yaww = yawws[i] = new GameObject();
@@ -93,7 +105,7 @@ public class CubeOfCubes : MonoBehaviour {
 
                     MeshRenderer tileRenderer = tile.GetComponentInChildren<MeshRenderer>();
 
-                    if (worlds[i][x, z] == TileStatus.White) {
+                    if (multiGOL.tiles[i][x, z] == TileStatus.White) {
                         tileRenderer.enabled = false;
                     } else {
                         tileRenderer.enabled = true;
@@ -115,16 +127,16 @@ public class CubeOfCubes : MonoBehaviour {
             currentGenerationTick = 0;
             Debug.Log("Generation");
 
+            multiGOL.PrecalculateGeneration();
+
             NextGeneration();
         }
     }
 
     public void NextGeneration() {
 
-        for (int i = 0; i < 6; i++) {
-            List<GOLManager.Change> changes = worlds[i].NextGeneration();
-
-            foreach (GOLManager.Change change in changes) {
+        for (int i = 0; i < faces; i++) {
+            foreach (Change change in multiGOL.NextGeneration(i)) {
                 MeshRenderer tileRenderer = worldTiles[i][change.x, change.z].GetComponentInChildren<MeshRenderer>();
                 if (change.newState == TileStatus.White) {
                     tileRenderer.enabled = false;
@@ -143,7 +155,7 @@ public class CubeOfCubes : MonoBehaviour {
             Tile tile = hit.transform.GetComponentInChildren<Tile>();
             if (tile != null) {
                 if (Input.GetMouseButton(0)) {
-                    worlds[tile.i][tile.x, tile.z] = TileStatus.Black;
+                    multiGOL.tiles[tile.i][tile.x, tile.z] = TileStatus.Black;
                     tile.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
                 }
             }

@@ -36,16 +36,6 @@ public class GOLManager {
         tiles = new TileStatus[x, z];
     }
 
-    public class Change {
-        public int x;
-        public int z;
-        public TileStatus newState;
-
-        public override string ToString() {
-            return "x: " + x + ", z: " + x + ", newState: " + newState;
-        }
-    }
-
     // this is the actual game of life
     // returns the changes as a list to make them faster to process
     public List<Change> NextGeneration() {

@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Tile : MonoBehaviour {
 
-    public int x { get; set; }
-    public int z { get; set; }
-    public int i { get; set; }
+    public int x;
+    public int z;
+    public int i;
 
+    public List<Coord> Adjacency;
 }

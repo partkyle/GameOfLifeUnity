@@ -28,15 +28,67 @@ public class CubeOfCubes : MonoBehaviour {
         tileMask = LayerMask.GetMask("Tiles");
         config = GameObject.FindObjectOfType<Config>() as Config;
         multiGOL = new MultiGOL(config.sizeX, config.sizeZ, faces);
-        multiGOL.tiles[1][2,4] = TileStatus.Black;
-        multiGOL.tiles[1][2,5] = TileStatus.Black;
-        multiGOL.tiles[1][2,6] = TileStatus.Black;
-        multiGOL.tiles[1][2,6] = TileStatus.Black;
-        multiGOL.tiles[1][3,3] = TileStatus.Black;
-        multiGOL.tiles[1][3,6] = TileStatus.Black;
-        multiGOL.tiles[1][4,4] = TileStatus.Black;
-        multiGOL.tiles[1][4,6] = TileStatus.Black;
-        multiGOL.tiles[1][5,5] = TileStatus.Black;
+
+        //// testing a boat
+        //multiGOL.tiles[1][2, 4] = TileStatus.Black;
+        //multiGOL.tiles[1][2, 5] = TileStatus.Black;
+        //multiGOL.tiles[1][2, 6] = TileStatus.Black;
+        //multiGOL.tiles[1][2, 6] = TileStatus.Black;
+        //multiGOL.tiles[1][3, 3] = TileStatus.Black;
+        //multiGOL.tiles[1][3, 6] = TileStatus.Black;
+        //multiGOL.tiles[1][4, 4] = TileStatus.Black;
+        //multiGOL.tiles[1][4, 6] = TileStatus.Black;
+        //multiGOL.tiles[1][5, 5] = TileStatus.Black;
+
+        // solid flower for testing
+        multiGOL.tiles[2][config.sizeX - 1, 5] = TileStatus.Black;
+        multiGOL.tiles[2][config.sizeX - 1, 6] = TileStatus.Black;
+        multiGOL.tiles[4][0, 4] = TileStatus.Black;
+        multiGOL.tiles[4][1, 5] = TileStatus.Black;
+        multiGOL.tiles[4][1, 6] = TileStatus.Black;
+        multiGOL.tiles[4][0, 7] = TileStatus.Black;
+
+        // solid flower for testing
+        multiGOL.tiles[4][config.sizeX - 1, 5] = TileStatus.Black;
+        multiGOL.tiles[4][config.sizeX - 1, 6] = TileStatus.Black;
+        multiGOL.tiles[5][0, 4] = TileStatus.Black;
+        multiGOL.tiles[5][1, 5] = TileStatus.Black;
+        multiGOL.tiles[5][1, 6] = TileStatus.Black;
+        multiGOL.tiles[5][0, 7] = TileStatus.Black;
+
+        // solid flower for testing
+        multiGOL.tiles[0][config.sizeX - 1, 5] = TileStatus.Black;
+        multiGOL.tiles[0][config.sizeX - 1, 6] = TileStatus.Black;
+        multiGOL.tiles[2][0, 4] = TileStatus.Black;
+        multiGOL.tiles[2][1, 5] = TileStatus.Black;
+        multiGOL.tiles[2][1, 6] = TileStatus.Black;
+        multiGOL.tiles[2][0, 7] = TileStatus.Black;
+
+        // solid flower for testing
+        multiGOL.tiles[5][config.sizeX - 1, 5] = TileStatus.Black;
+        multiGOL.tiles[5][config.sizeX - 1, 6] = TileStatus.Black;
+        multiGOL.tiles[0][0, 4] = TileStatus.Black;
+        multiGOL.tiles[0][1, 5] = TileStatus.Black;
+        multiGOL.tiles[0][1, 6] = TileStatus.Black;
+        multiGOL.tiles[0][0, 7] = TileStatus.Black;
+
+        // solid flower for testing
+        multiGOL.tiles[1][3, 0] = TileStatus.Black;
+        multiGOL.tiles[1][4, 1] = TileStatus.Black;
+        multiGOL.tiles[1][5, 0] = TileStatus.Black;
+        multiGOL.tiles[2][3, config.sizeZ - 1] = TileStatus.Black;
+        multiGOL.tiles[2][4, config.sizeZ - 2] = TileStatus.Black;
+        multiGOL.tiles[2][5, config.sizeZ - 1] = TileStatus.Black;
+
+
+        // solid flower for testing
+        multiGOL.tiles[2][3, 0] = TileStatus.Black;
+        multiGOL.tiles[2][4, 1] = TileStatus.Black;
+        multiGOL.tiles[2][5, 0] = TileStatus.Black;
+        multiGOL.tiles[3][3, config.sizeZ - 1] = TileStatus.Black;
+        multiGOL.tiles[3][4, config.sizeZ - 2] = TileStatus.Black;
+        multiGOL.tiles[3][5, config.sizeZ - 1] = TileStatus.Black;
+        
 
         BuildGrid();
     }
@@ -49,20 +101,20 @@ public class CubeOfCubes : MonoBehaviour {
 
         Vector3[] containerPositions = new Vector3[] {
             new Vector3(0,0,0), // left
+            new Vector3(width/2f, height/2f, 0), // top
             new Vector3(width/2f, 0, -width/2f), // front
+            new Vector3(width/2f, -height/2f), // bottom
             new Vector3(width, 0, 0), // right
             new Vector3(width/2f, 0, width/2f), // back
-            new Vector3(width/2f, height/2f, 0), // top
-            new Vector3(width/2f, -height/2f), // bottom
         };
 
         Vector3[] containerRotations = new Vector3[] {
             new Vector3(-90, 90, 0), // left
+            Vector3.zero, // top
             new Vector3(-90, 0, 0), // front
+            new Vector3(180, 0, 0),  // bottom
             new Vector3(-90, -90, 0), // right
             new Vector3(-90, 180, 0), // back
-            Vector3.zero, // top
-            new Vector3(180, 0, 0),  // bottom
         };
 
         GameObject theBigWrapper = new GameObject();
@@ -102,6 +154,7 @@ public class CubeOfCubes : MonoBehaviour {
                     tileComponent.x = x;
                     tileComponent.z = z;
                     tileComponent.i = i;
+                    tileComponent.Adjacency = multiGOL.adjacencyGOL.adjacencyList[i, z, x];
 
                     MeshRenderer tileRenderer = tile.GetComponentInChildren<MeshRenderer>();
 

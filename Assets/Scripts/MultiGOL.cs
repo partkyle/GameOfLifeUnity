@@ -8,7 +8,7 @@ public class MultiGOL {
     public int sizeZ;
     public int sizeI;
 
-    AdjancencyGOL adjacencyGOL;
+    public AdjancencyGOL adjacencyGOL;
 
     public TileStatus[][,] tiles;
 

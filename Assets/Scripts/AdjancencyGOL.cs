@@ -70,6 +70,7 @@ public class AdjancencyGOL {
             }
         }
 
+        // the 2 easy vertical faces
         for (int x = 0; x < sizeX; x++) {
             for (int dx = -1; dx <= 1; dx++) {
                 int coordx = x + dx;
@@ -86,6 +87,94 @@ public class AdjancencyGOL {
                     int bottom = 3;
                     adjacencyList[top, 0, x].Add(new Coord { i = bottom, x = coordx, z = sizeZ - 1 });
                     adjacencyList[bottom, sizeZ - 1, x].Add(new Coord { i = top, x = coordx, z = 0 });
+                }
+            }
+        }
+
+        // 0,1
+        for (int x = 0; x < sizeX; x++) {
+            int zpos = sizeZ - 1 - x;
+            for (int dx = -1; dx <= 1; dx++) {
+                int coordx = x + dx;
+                if (coordx < 0 || coordx >= sizeX) continue;
+
+                {
+                    int bottom = 0;
+                    int rotatedTop = 1;
+
+                    adjacencyList[bottom, sizeZ - 1, x].Add(new Coord { i = rotatedTop, x = 0, z = sizeZ - 1 - coordx });
+                    adjacencyList[rotatedTop, zpos, 0].Add(new Coord { i = bottom, x = coordx, z = sizeZ - 1 });
+                }
+            }
+        }
+
+        // 0,3
+        for (int x = 0; x < sizeX; x++) {
+            int zpos = x;
+            for (int dx = -1; dx <= 1; dx++) {
+                int coordx = x + dx;
+                if (coordx < 0 || coordx >= sizeX) continue;
+
+                {
+                    int top = 0;
+                    int rotatedBottom = 3;
+                    adjacencyList[top, 0, x].Add(new Coord { i = rotatedBottom, x = 0, z = coordx });
+                    adjacencyList[rotatedBottom, x, 0].Add(new Coord { i = top, x = coordx, z = 0 });
+                }
+            }
+        }
+
+
+        // 1,4
+        for (int x = 0; x < sizeX; x++) {
+            for (int dx = -1; dx <= 1; dx++) {
+                int coordx = x + dx;
+                if (coordx < 0 || coordx >= sizeX) continue;
+
+                {
+                    int rotatedTop = 1;
+                    int bottom = 4;
+                    adjacencyList[rotatedTop, x, sizeX - 1].Add(new Coord { i = bottom, x = coordx, z = sizeZ - 1 });
+                    adjacencyList[bottom, sizeZ - 1, x].Add(new Coord { i = rotatedTop, x = sizeX - 1, z = coordx });
+                }
+            }
+        }
+
+        // 3,4
+        for (int x = 0; x < sizeX; x++) {
+            for (int dx = -1; dx <= 1; dx++) {
+                int coordx = x + dx;
+                if (coordx < 0 || coordx >= sizeX) continue;
+
+                {
+                    int top = 4;
+                    int rotatedBottom = 3;
+                    adjacencyList[top, 0, x].Add(new Coord { i = rotatedBottom, x = sizeX - 1, z = sizeZ - 1 - coordx });
+                    adjacencyList[rotatedBottom, x, sizeX - 1].Add(new Coord { i = top, x = sizeX - 1 - coordx, z = 0 });
+                }
+            }
+        }
+
+        // 1,5 and 3,5 (AKA the hard ones)
+        for (int x = 0; x < sizeX; x++) {
+            for (int dx = -1; dx <= 1; dx++) {
+                int coordx = x + dx;
+                if (coordx < 0 || coordx >= sizeX) continue;
+
+                {
+                    // these names don't really indicate how terrible this is
+                    int rotatedTop = 1;
+                    int rotatedBottom = 5;
+                    adjacencyList[rotatedTop, sizeZ - 1, x].Add(new Coord { i = rotatedBottom, x = sizeX - 1 - coordx, z = sizeZ - 1 });
+                    adjacencyList[rotatedBottom, sizeZ - 1, sizeX - 1 - x].Add(new Coord { i = rotatedTop, x = coordx, z = sizeZ - 1 });
+                }
+
+                {
+                    // these names don't really indicate how terrible this is
+                    int rotatedTop = 3;
+                    int rotatedBottom = 5;
+                    adjacencyList[rotatedTop, 0, x].Add(new Coord { i = rotatedBottom, x = sizeX - 1 - coordx, z = 0 });
+                    adjacencyList[rotatedBottom, 0, sizeX - 1 - x].Add(new Coord { i = rotatedTop, x = coordx, z = 0 });
                 }
             }
         }

@@ -40,55 +40,98 @@ public class CubeOfCubes : MonoBehaviour {
         //multiGOL.tiles[1][4, 6] = TileStatus.Black;
         //multiGOL.tiles[1][5, 5] = TileStatus.Black;
 
-        // solid flower for testing
-        multiGOL.tiles[2][config.sizeX - 1, 5] = TileStatus.Black;
-        multiGOL.tiles[2][config.sizeX - 1, 6] = TileStatus.Black;
-        multiGOL.tiles[4][0, 4] = TileStatus.Black;
-        multiGOL.tiles[4][1, 5] = TileStatus.Black;
-        multiGOL.tiles[4][1, 6] = TileStatus.Black;
-        multiGOL.tiles[4][0, 7] = TileStatus.Black;
+        //// solid flower for testing
+        //multiGOL.tiles[2][config.sizeX - 1, 5] = TileStatus.Black;
+        //multiGOL.tiles[2][config.sizeX - 1, 6] = TileStatus.Black;
+        //multiGOL.tiles[4][0, 4] = TileStatus.Black;
+        //multiGOL.tiles[4][1, 5] = TileStatus.Black;
+        //multiGOL.tiles[4][1, 6] = TileStatus.Black;
+        //multiGOL.tiles[4][0, 7] = TileStatus.Black;
 
-        // solid flower for testing
-        multiGOL.tiles[4][config.sizeX - 1, 5] = TileStatus.Black;
-        multiGOL.tiles[4][config.sizeX - 1, 6] = TileStatus.Black;
-        multiGOL.tiles[5][0, 4] = TileStatus.Black;
-        multiGOL.tiles[5][1, 5] = TileStatus.Black;
-        multiGOL.tiles[5][1, 6] = TileStatus.Black;
-        multiGOL.tiles[5][0, 7] = TileStatus.Black;
+        //// solid flower for testing
+        //multiGOL.tiles[4][config.sizeX - 1, 5] = TileStatus.Black;
+        //multiGOL.tiles[4][config.sizeX - 1, 6] = TileStatus.Black;
+        //multiGOL.tiles[5][0, 4] = TileStatus.Black;
+        //multiGOL.tiles[5][1, 5] = TileStatus.Black;
+        //multiGOL.tiles[5][1, 6] = TileStatus.Black;
+        //multiGOL.tiles[5][0, 7] = TileStatus.Black;
 
-        // solid flower for testing
-        multiGOL.tiles[0][config.sizeX - 1, 5] = TileStatus.Black;
-        multiGOL.tiles[0][config.sizeX - 1, 6] = TileStatus.Black;
-        multiGOL.tiles[2][0, 4] = TileStatus.Black;
-        multiGOL.tiles[2][1, 5] = TileStatus.Black;
-        multiGOL.tiles[2][1, 6] = TileStatus.Black;
-        multiGOL.tiles[2][0, 7] = TileStatus.Black;
+        //// solid flower for testing
+        //multiGOL.tiles[0][config.sizeX - 1, 5] = TileStatus.Black;
+        //multiGOL.tiles[0][config.sizeX - 1, 6] = TileStatus.Black;
+        //multiGOL.tiles[2][0, 4] = TileStatus.Black;
+        //multiGOL.tiles[2][1, 5] = TileStatus.Black;
+        //multiGOL.tiles[2][1, 6] = TileStatus.Black;
+        //multiGOL.tiles[2][0, 7] = TileStatus.Black;
 
-        // solid flower for testing
-        multiGOL.tiles[5][config.sizeX - 1, 5] = TileStatus.Black;
-        multiGOL.tiles[5][config.sizeX - 1, 6] = TileStatus.Black;
-        multiGOL.tiles[0][0, 4] = TileStatus.Black;
-        multiGOL.tiles[0][1, 5] = TileStatus.Black;
-        multiGOL.tiles[0][1, 6] = TileStatus.Black;
-        multiGOL.tiles[0][0, 7] = TileStatus.Black;
+        //// solid flower for testing
+        //multiGOL.tiles[5][config.sizeX - 1, 5] = TileStatus.Black;
+        //multiGOL.tiles[5][config.sizeX - 1, 6] = TileStatus.Black;
+        //multiGOL.tiles[0][0, 4] = TileStatus.Black;
+        //multiGOL.tiles[0][1, 5] = TileStatus.Black;
+        //multiGOL.tiles[0][1, 6] = TileStatus.Black;
+        //multiGOL.tiles[0][0, 7] = TileStatus.Black;
 
-        // solid flower for testing
-        multiGOL.tiles[1][3, 0] = TileStatus.Black;
-        multiGOL.tiles[1][4, 1] = TileStatus.Black;
-        multiGOL.tiles[1][5, 0] = TileStatus.Black;
-        multiGOL.tiles[2][3, config.sizeZ - 1] = TileStatus.Black;
-        multiGOL.tiles[2][4, config.sizeZ - 2] = TileStatus.Black;
-        multiGOL.tiles[2][5, config.sizeZ - 1] = TileStatus.Black;
+        //// solid flower for testing
+        //multiGOL.tiles[1][3, 0] = TileStatus.Black;
+        //multiGOL.tiles[1][4, 1] = TileStatus.Black;
+        //multiGOL.tiles[1][5, 0] = TileStatus.Black;
+        //multiGOL.tiles[2][3, config.sizeZ - 1] = TileStatus.Black;
+        //multiGOL.tiles[2][4, config.sizeZ - 2] = TileStatus.Black;
+        //multiGOL.tiles[2][5, config.sizeZ - 1] = TileStatus.Black;
 
 
-        // solid flower for testing
-        multiGOL.tiles[2][3, 0] = TileStatus.Black;
-        multiGOL.tiles[2][4, 1] = TileStatus.Black;
-        multiGOL.tiles[2][5, 0] = TileStatus.Black;
-        multiGOL.tiles[3][3, config.sizeZ - 1] = TileStatus.Black;
-        multiGOL.tiles[3][4, config.sizeZ - 2] = TileStatus.Black;
-        multiGOL.tiles[3][5, config.sizeZ - 1] = TileStatus.Black;
-        
+        //// solid flower for testing
+        //multiGOL.tiles[2][3, 0] = TileStatus.Black;
+        //multiGOL.tiles[2][4, 1] = TileStatus.Black;
+        //multiGOL.tiles[2][5, 0] = TileStatus.Black;
+        //multiGOL.tiles[3][3, config.sizeZ - 1] = TileStatus.Black;
+        //multiGOL.tiles[3][4, config.sizeZ - 2] = TileStatus.Black;
+        //multiGOL.tiles[3][5, config.sizeZ - 1] = TileStatus.Black;
+
+        //multiGOL.tiles[0][3, config.sizeZ - 1] = TileStatus.Black;
+        //multiGOL.tiles[0][4, config.sizeZ - 2] = TileStatus.Black;
+        //multiGOL.tiles[0][5, config.sizeZ - 1] = TileStatus.Black;
+        //multiGOL.tiles[1][0, config.sizeZ - 1 - 3] = TileStatus.Black;
+        //multiGOL.tiles[1][1, config.sizeZ - 1 - 4] = TileStatus.Black;
+        //multiGOL.tiles[1][0, config.sizeZ - 1 - 5] = TileStatus.Black;
+
+        //multiGOL.tiles[0][3, 0] = TileStatus.Black;
+        //multiGOL.tiles[0][4, 1] = TileStatus.Black;
+        //multiGOL.tiles[0][5, 0] = TileStatus.Black;
+        //multiGOL.tiles[3][0, 3] = TileStatus.Black;
+        //multiGOL.tiles[3][1, 4] = TileStatus.Black;
+        //multiGOL.tiles[3][0, 5] = TileStatus.Black;
+
+        //multiGOL.tiles[1][config.sizeX - 1, 3] = TileStatus.Black;
+        //multiGOL.tiles[1][config.sizeX - 2, 4] = TileStatus.Black;
+        //multiGOL.tiles[1][config.sizeX - 1, 5] = TileStatus.Black;
+        //multiGOL.tiles[4][3, config.sizeZ - 1] = TileStatus.Black;
+        //multiGOL.tiles[4][4, config.sizeZ - 2] = TileStatus.Black;
+        //multiGOL.tiles[4][5, config.sizeZ - 1] = TileStatus.Black;
+
+        //multiGOL.tiles[4][3, 0] = TileStatus.Black;
+        //multiGOL.tiles[4][4, 1] = TileStatus.Black;
+        //multiGOL.tiles[4][5, 0] = TileStatus.Black;
+        //multiGOL.tiles[3][config.sizeX - 1, config.sizeZ - 1 - 3] = TileStatus.Black;
+        //multiGOL.tiles[3][config.sizeX - 2, config.sizeZ - 1 - 4] = TileStatus.Black;
+        //multiGOL.tiles[3][config.sizeX - 1, config.sizeZ - 1 - 5] = TileStatus.Black;
+
+
+        //multiGOL.tiles[1][3, config.sizeZ - 1] = TileStatus.Black;
+        //multiGOL.tiles[1][4, config.sizeZ - 2] = TileStatus.Black;
+        //multiGOL.tiles[1][5, config.sizeZ - 1] = TileStatus.Black;
+        //multiGOL.tiles[5][config.sizeX - 1 - 3, config.sizeZ - 1] = TileStatus.Black;
+        //multiGOL.tiles[5][config.sizeX - 1 - 4, config.sizeZ - 2] = TileStatus.Black;
+        //multiGOL.tiles[5][config.sizeX - 1 - 5, config.sizeZ - 1] = TileStatus.Black;
+
+
+        //multiGOL.tiles[3][3, 0] = TileStatus.Black;
+        //multiGOL.tiles[3][4, 1] = TileStatus.Black;
+        //multiGOL.tiles[3][5, 0] = TileStatus.Black;
+        //multiGOL.tiles[5][config.sizeX - 1 - 3, 0] = TileStatus.Black;
+        //multiGOL.tiles[5][config.sizeX - 1 - 4, 1] = TileStatus.Black;
+        //multiGOL.tiles[5][config.sizeX - 1 - 5, 0] = TileStatus.Black;
 
         BuildGrid();
     }

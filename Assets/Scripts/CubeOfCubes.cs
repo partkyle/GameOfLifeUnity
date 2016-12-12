@@ -11,8 +11,6 @@ public class CubeOfCubes : MonoBehaviour {
 
     float currentGenerationTick;
 
-    //GOLManager[] worlds;
-
     GameObject[][,] worldTiles;
 
     GameObject container;
@@ -170,14 +168,14 @@ public class CubeOfCubes : MonoBehaviour {
         for (int i = 0; i < 6; i++) {
             worldTiles[i] = new GameObject[config.sizeX, config.sizeZ];
 
-            GameObject yaww = yawws[i] = new GameObject();
-            yaww.name = "CenteringTileWrapper " + i;
-            yaww.transform.parent = theBigWrapper.transform;
-            yaww.transform.position = containerPositions[i];
+            GameObject centeringTileWrapper = yawws[i] = new GameObject();
+            centeringTileWrapper.name = "CenteringTileWrapper " + i;
+            centeringTileWrapper.transform.parent = theBigWrapper.transform;
+            centeringTileWrapper.transform.position = containerPositions[i];
 
             container = new GameObject();
             container.name = "TileWrapper_" + i;
-            container.transform.parent = yaww.transform;
+            container.transform.parent = centeringTileWrapper.transform;
 
             GameObject floor = Instantiate(floorPrefab);
             floor.transform.parent = container.transform;
@@ -211,7 +209,7 @@ public class CubeOfCubes : MonoBehaviour {
                 }
             }
 
-            yaww.transform.eulerAngles = containerRotations[i];
+            centeringTileWrapper.transform.eulerAngles = containerRotations[i];
         }
     }
 

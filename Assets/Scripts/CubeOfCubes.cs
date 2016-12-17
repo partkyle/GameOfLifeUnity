@@ -132,7 +132,11 @@ public class CubeOfCubes : MonoBehaviour {
         //multiGOL.tiles[5][config.sizeX - 1 - 5, 0] = TileStatus.Black;
 
         BuildGrid();
-        Camera.main.gameObject.AddComponent<CameraMovement>();
+        Bounds bounds = new Bounds();
+        foreach (var childBounds in GetComponentsInChildren<Renderer>()) {
+            bounds.Encapsulate(childBounds.bounds);
+        }
+        GameObject.FindObjectOfType<MouseOrbit>().target = bounds.center;
     }
 
     public void BuildGrid() {

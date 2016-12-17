@@ -132,6 +132,7 @@ public class CubeOfCubes : MonoBehaviour {
         //multiGOL.tiles[5][config.sizeX - 1 - 5, 0] = TileStatus.Black;
 
         BuildGrid();
+        Camera.main.gameObject.AddComponent<CameraMovement>();
     }
 
     public void BuildGrid() {

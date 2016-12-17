@@ -9,6 +9,9 @@ public class MouseOrbit : MonoBehaviour {
     public float distance = 5.0f;
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
+    public float zSpeed = 120.0f;
+
+    public float keySpeed = 0.5f;
 
     public float yMinLimit = -20f;
     public float yMaxLimit = 80f;
@@ -37,26 +40,53 @@ public class MouseOrbit : MonoBehaviour {
 
     void LateUpdate() {
         // Don't move unless asked to.
+
+        float moveX = 0f, moveY = 0f;
         if (Input.GetMouseButton(1)) {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
-            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+            moveX = Input.GetAxis("Mouse X");
+            moveY = Input.GetAxis("Mouse Y");
         } else {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            if (Input.GetKey(KeyCode.W)) {
+                moveY = -keySpeed;
+            }
+            if (Input.GetKey(KeyCode.A)) {
+                moveX = keySpeed;
+            }
+            if (Input.GetKey(KeyCode.S)) {
+                moveY = keySpeed;
+            }
+            if (Input.GetKey(KeyCode.D)) {
+                moveX = -keySpeed;
+            }
+
+            if (moveX != 0f && moveY != 0f) {
+                Vector2 clamps = new Vector2(moveX, moveY);
+                Vector2 magnitude = Vector2.ClampMagnitude(clamps, keySpeed);
+                moveX = magnitude.x;
+                moveY = magnitude.y;
+            }
+
         }
+
+
+        x += moveX * xSpeed * distance * Time.deltaTime;
+        y -= moveY * ySpeed * distance * Time.deltaTime;
+
+
+        Debug.Log("Mouse X: " + Input.GetAxis("Mouse X") + ", Mouse Y" + Input.GetAxis("Mouse Y"));
+
+        Debug.Log(Time.deltaTime);
 
         y = ClampAngle(y, yMinLimit, yMaxLimit);
 
         Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-        distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
+        distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * zSpeed, distanceMin, distanceMax);
 
-        RaycastHit hit;
-        if (Physics.Linecast(target, transform.position, out hit)) {
-            distance -= hit.distance;
-        }
         Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
         Vector3 position = rotation * negDistance + target;
 

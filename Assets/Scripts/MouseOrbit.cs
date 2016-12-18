@@ -72,14 +72,8 @@ public class MouseOrbit : MonoBehaviour {
 
         }
 
-
         x += moveX * xSpeed * distance * Time.deltaTime;
         y -= moveY * ySpeed * distance * Time.deltaTime;
-
-
-        Debug.Log("Mouse X: " + Input.GetAxis("Mouse X") + ", Mouse Y" + Input.GetAxis("Mouse Y"));
-
-        Debug.Log(Time.deltaTime);
 
         y = ClampAngle(y, yMinLimit, yMaxLimit);
 

@@ -27,6 +27,8 @@ public class CubeOfCubes : MonoBehaviour {
         config = GameObject.FindObjectOfType<Config>() as Config;
         multiGOL = new MultiGOL(config.sizeX, config.sizeZ, faces);
 
+        config.generationTimer = 1.0f;
+
         //// testing a boat
         //multiGOL.tiles[1][2, 4] = TileStatus.Black;
         //multiGOL.tiles[1][2, 5] = TileStatus.Black;
@@ -222,7 +224,7 @@ public class CubeOfCubes : MonoBehaviour {
     void Update() {
         HandleClick();
         currentGenerationTick += Time.deltaTime;
-        if (currentGenerationTick >= config.generationTimer) {
+        if (currentGenerationTick >= config.generationTimer && ! config.paused) {
             currentGenerationTick = 0;
             Debug.Log("Generation");
 

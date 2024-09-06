@@ -7,7 +7,7 @@ A game of life implementation in unity.
 
 2022.3.45f1
 
-![screenshot](./Docs/screencast.png)
+![screenshot](./Docs/screencast.gif)
 
 ## Cube Of Cubes
 

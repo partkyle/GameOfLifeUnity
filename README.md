@@ -3,6 +3,10 @@ GameOfLifeUnity
 
 A game of life implementation in unity.
 
+## Editor Version
+
+5.4.2f2
+
 ## Cube Of Cubes
 
 [scene](Assets/Scenes/CubeOfCubes.unity) 

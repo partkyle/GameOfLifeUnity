@@ -5,7 +5,9 @@ A game of life implementation in unity.
 
 ## Editor Version
 
-5.4.2f2
+2022.3.45f1
+
+![screenshot](./Docs/screenshot.png)
 
 ## Cube Of Cubes
 
